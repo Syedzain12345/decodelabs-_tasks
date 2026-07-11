@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DriveHub | Find Your Perfect Car</title>
+<meta name="description" content="DriveHub — discover, compare, and buy premium, luxury, and affordable vehicles from trusted dealerships.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#home" class="logo">Drive<span>Hub</span></a>
+
+    <nav class="main-nav" aria-label="Primary navigation">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#cars">Cars</a></li>
+        <li><a href="#brands">Brands</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" aria-label="Search cars" type="button">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <a href="#cars" class="btn btn-primary">Buy Now</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <span class="eyebrow">Trusted by 15,000+ drivers</span>
+    <h1>Drive Your Dream Car Today</h1>
+    <p>Discover a wide range of premium, luxury, and affordable vehicles from trusted brands. Whether you're searching for your first car or upgrading to your dream ride, DriveHub makes car buying simple, transparent, and hassle-free.</p>
+    <div class="hero-actions">
+      <a href="#cars" class="btn btn-primary btn-lg">Explore Cars</a>
+      <a href="#brands" class="btn btn-outline btn-lg">View Collection</a>
+    </div>
+  </div>
+  <div class="hero-diagonal" aria-hidden="true"></div>
+</section>
+
+<!-- ============ FEATURED CARS ============ -->
+<section class="section" id="cars">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Inventory</span>
+      <h2>Featured Cars</h2>
+      <p>Hand-picked vehicles verified for quality, performance, and value.</p>
+    </div>
+
+    <div class="card-grid">
+
+      <article class="car-card">
+        <div class="car-img"><img src="https://images.pexels.com/photos/19818792/pexels-photo-19818792.jpeg?auto=compress&cs=tinysrgb&w=800" width="800" height="533" loading="lazy" alt="White Toyota Corolla sedan parked at night"></div>
+        <div class="car-body">
+          <div class="car-title-row">
+            <h3>Toyota Corolla</h3>
+            <span class="rating" aria-label="Rating 4 out of 5">★★★★<span class="dim">☆</span></span>
+          </div>
+          <p class="car-brand">Toyota &middot; Sedan</p>
+          <div class="car-specs">
+            <span class="spec">⛽ Petrol</span>
+            <span class="spec">⚙ Automatic</span>
+          </div>
+          <div class="car-footer">
+            <span class="price">$24,500</span>
+            <a href="#contact" class="btn btn-primary btn-sm">Buy Now</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="car-card">
+        <div class="car-img"><img src="https://images.unsplash.com/photo-1741889823656-c056b0c43749?auto=format&fit=crop&w=800&q=80" width="800" height="533" loading="lazy" alt="White BMW M4 performance coupe at sunset"></div>
+        <div class="car-body">
+          <div class="car-title-row">
+            <h3>BMW M4</h3>
+            <span class="rating" aria-label="Rating 5 out of 5">★★★★★</span>
+          </div>
+          <p class="car-brand">BMW &middot; Sports</p>
+          <div class="car-specs">
+            <span class="spec">⛽ Petrol</span>
+            <span class="spec">⚙ Automatic</span>
+          </div>
+          <div class="car-footer">
+            <span class="price">$78,000</span>
+            <a href="#contact" class="btn btn-primary btn-sm">Buy Now</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="car-card">
+        <div class="car-img"><img src="https://images.pexels.com/photos/9300916/pexels-photo-9300916.jpeg?auto=compress&cs=tinysrgb&w=800" width="800" height="533" loading="lazy" alt="White Tesla Model 3 electric sedan on a highway"></div>
+        <div class="car-body">
+          <div class="car-title-row">
+            <h3>Tesla Model 3</h3>
+            <span class="rating" aria-label="Rating 5 out of 5">★★★★★</span>
+          </div>
+          <p class="car-brand">Tesla &middot; Electric</p>
+          <div class="car-specs">
+            <span class="spec">⚡ Electric</span>
+            <span class="spec">⚙ Automatic</span>
+          </div>
+          <div class="car-footer">
+            <span class="price">$42,000</span>
+            <a href="#contact" class="btn btn-primary btn-sm">Buy Now</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="car-card">
+        <div class="car-img"><img src="https://images.pexels.com/photos/4003126/pexels-photo-4003126.jpeg?auto=compress&cs=tinysrgb&w=800" width="800" height="533" loading="lazy" alt="Mercedes-Benz C-Class coupe"></div>
+        <div class="car-body">
+          <div class="car-title-row">
+            <h3>Mercedes C-Class</h3>
+            <span class="rating" aria-label="Rating 4.5 out of 5">★★★★<span class="dim">☆</span></span>
+          </div>
+          <p class="car-brand">Mercedes-Benz &middot; Sedan</p>
+          <div class="car-specs">
+            <span class="spec">⛽ Diesel</span>
+            <span class="spec">⚙ Automatic</span>
+          </div>
+          <div class="car-footer">
+            <span class="price">$45,000</span>
+            <a href="#contact" class="btn btn-primary btn-sm">Buy Now</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="car-card">
+        <div class="car-img"><img src="https://images.pexels.com/photos/18928872/pexels-photo-18928872.jpeg?auto=compress&cs=tinysrgb&w=800" width="800" height="533" loading="lazy" alt="Audi A4 sedan driving through a forest road"></div>
+        <div class="car-body">
+          <div class="car-title-row">
+            <h3>Audi A4</h3>
+            <span class="rating" aria-label="Rating 4 out of 5">★★★★<span class="dim">☆</span></span>
+          </div>
+          <p class="car-brand">Audi &middot; Sedan</p>
+          <div class="car-specs">
+            <span class="spec">⛽ Petrol</span>
+            <span class="spec">⚙ Automatic</span>
+          </div>
+          <div class="car-footer">
+            <span class="price">$39,000</span>
+            <a href="#contact" class="btn btn-primary btn-sm">Buy Now</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="car-card">
+        <div class="car-img"><img src="https://images.pexels.com/photos/6143990/pexels-photo-6143990.jpeg?auto=compress&cs=tinysrgb&w=800" width="800" height="533" loading="lazy" alt="Yellow Honda Civic hatchback close-up"></div>
+        <div class="car-body">
+          <div class="car-title-row">
+            <h3>Honda Civic</h3>
+            <span class="rating" aria-label="Rating 4 out of 5">★★★★<span class="dim">☆</span></span>
+          </div>
+          <p class="car-brand">Honda &middot; Hatchback</p>
+          <div class="car-specs">
+            <span class="spec">⛽ Petrol</span>
+            <span class="spec">⚙ Manual</span>
+          </div>
+          <div class="car-footer">
+            <span class="price">$22,000</span>
+            <a href="#contact" class="btn btn-primary btn-sm">Buy Now</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ BROWSE BY BRAND ============ -->
+<section class="section section-alt" id="brands">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Manufacturers</span>
+      <h2>Browse by Brand</h2>
+      <p>Shop new and used vehicles from the world's most trusted automakers.</p>
+    </div>
+
+    <div class="brand-grid">
+      <a href="#cars" class="brand-card"><span class="brand-badge">TOY</span>Toyota</a>
+      <a href="#cars" class="brand-card"><span class="brand-badge">HON</span>Honda</a>
+      <a href="#cars" class="brand-card"><span class="brand-badge">BMW</span>BMW</a>
+      <a href="#cars" class="brand-card"><span class="brand-badge">MBZ</span>Mercedes</a>
+      <a href="#cars" class="brand-card"><span class="brand-badge">TSL</span>Tesla</a>
+      <a href="#cars" class="brand-card"><span class="brand-badge">AUD</span>Audi</a>
+      <a href="#cars" class="brand-card"><span class="brand-badge">KIA</span>Kia</a>
+      <a href="#cars" class="brand-card"><span class="brand-badge">HYU</span>Hyundai</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY CHOOSE US ============ -->
+<section class="section" id="why-us">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Our Promise</span>
+      <h2>Why Choose Us</h2>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">✔</div>
+        <h3>Premium Quality</h3>
+        <p>Only certified vehicles with verified history.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💲</div>
+        <h3>Affordable Prices</h3>
+        <p>Competitive pricing with no hidden charges.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📄</div>
+        <h3>Easy Financing</h3>
+        <p>Flexible financing options to suit every budget.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤝</div>
+        <h3>Trusted Dealers</h3>
+        <p>Partnered with authorized dealerships nationwide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POPULAR CATEGORIES ============ -->
+<section class="section section-alt" id="categories">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Explore</span>
+      <h2>Popular Categories</h2>
+    </div>
+
+    <div class="category-grid">
+      <a href="#cars" class="category-card"><span>🚗</span>Sedan</a>
+      <a href="#cars" class="category-card"><span>🚙</span>SUV</a>
+      <a href="#cars" class="category-card"><span>🏎</span>Sports</a>
+      <a href="#cars" class="category-card"><span>⚡</span>Electric</a>
+      <a href="#cars" class="category-card"><span>🚐</span>Family Cars</a>
+      <a href="#cars" class="category-card"><span>🚚</span>Pickup Trucks</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CUSTOMER REVIEWS ============ -->
+<section class="section" id="reviews">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Testimonials</span>
+      <h2>Customer Reviews</h2>
+    </div>
+
+    <div class="review-grid">
+      <blockquote class="review-card">
+        <span class="rating" aria-hidden="true">★★★★★</span>
+        <p>"Buying my first car through DriveHub was incredibly easy. The listings were detailed, and the process was smooth."</p>
+        <footer>— Ahmed Khan</footer>
+      </blockquote>
+      <blockquote class="review-card">
+        <span class="rating" aria-hidden="true">★★★★★</span>
+        <p>"Excellent customer support and a great collection of luxury vehicles."</p>
+        <footer>— Sarah Ali</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT US ============ -->
+<section class="section section-alt" id="about">
+  <div class="container about-grid">
+    <div class="about-text">
+      <span class="section-tag">Who We Are</span>
+      <h2>About DriveHub</h2>
+      <p>DriveHub is a trusted online platform dedicated to helping customers discover, compare, and purchase high-quality vehicles. We connect buyers with reliable dealerships and provide detailed vehicle information to make every purchase confident and convenient.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-box"><strong>500+</strong><span>Verified Vehicles</span></div>
+      <div class="stat-box"><strong>50+</strong><span>Trusted Dealers</span></div>
+      <div class="stat-box"><strong>15K+</strong><span>Happy Customers</span></div>
+      <div class="stat-box"><strong>4.8/5</strong><span>Average Rating</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Get In Touch</span>
+      <h2>Contact Us</h2>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Contact Details</h3>
+        <p>📍 <strong>Address:</strong> 24 Motorway Plaza, Greater Lucknow, India</p>
+        <p>📧 <strong>Email:</strong> hello@drivehub.tech</p>
+        <p>📞 <strong>Phone:</strong> +91 89330 06408</p>
+      </div>
+      <div class="contact-card">
+        <h3>Business Hours</h3>
+        <p><strong>Monday – Friday:</strong> 9:00 AM – 8:00 PM</p>
+        <p><strong>Saturday:</strong> 10:00 AM – 6:00 PM</p>
+        <p><strong>Sunday:</strong> Closed</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <a href="#home" class="logo footer-logo">Drive<span>Hub</span></a>
+      <p>Simple, transparent, and hassle-free car buying — from first cars to dream rides.</p>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">ig</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="Twitter">x</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#cars">Cars</a></li>
+        <li><a href="#brands">Brands</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Popular Brands</h4>
+      <ul>
+        <li><a href="#cars">Toyota</a></li>
+        <li><a href="#cars">BMW</a></li>
+        <li><a href="#cars">Tesla</a></li>
+        <li><a href="#cars">Mercedes</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li>Greater Lucknow, India</li>
+        <li>decodelabs.tech@gmail.com</li>
+        <li>+91 89330 06408</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; 2026 DriveHub. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
