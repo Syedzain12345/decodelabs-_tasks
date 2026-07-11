@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tools Hub — Discover the Future of Artificial Intelligence</title>
+<meta name="description" content="AI Tools Hub is a curated directory to discover, compare, and choose the best AI-powered tools for chatbots, image generation, coding, writing, and more.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  /* ============================================
+     TOKENS
+  ============================================ */
+  :root{
+    --bg-deep:#1C3334;
+    --bg-primary:#2F4454;
+    --maroon:#2E151B;
+    --rose:#DA7B93;
+    --rose-soft:#f0aabc;
+    --teal:#376E6F;
+    --teal-soft:#5b9a9b;
+
+    --ink:#F3EFE9;
+    --ink-muted:rgba(243,239,233,0.68);
+    --ink-faint:rgba(243,239,233,0.42);
+
+    --font-display:'Unbounded', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'Space Mono', monospace;
+
+    --radius-lg:28px;
+    --radius-md:18px;
+    --radius-sm:10px;
+
+    --container:1200px;
+    --pad:clamp(20px, 5vw, 64px);
+
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg-primary);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+  section{position:relative;}
+
+  .wrap{
+    max-width:var(--container);
+    margin:0 auto;
+    padding:0 var(--pad);
+  }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--rose);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:16px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:8px;height:8px;
+    border-radius:50%;
+    background:var(--rose);
+    flex:none;
+  }
+
+  .section-head{
+    max-width:640px;
+    margin-bottom:56px;
+  }
+  .section-head h2{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(1.9rem, 3.4vw, 2.7rem);
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+  .section-head p{
+    margin-top:14px;
+    color:var(--ink-muted);
+    font-size:1.02rem;
+    max-width:520px;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:14px 28px;
+    border-radius:100px;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:0.95rem;
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .3s ease, color .3s ease;
+  }
+  .btn-primary{
+    background:var(--rose);
+    color:var(--maroon);
+    box-shadow:0 10px 30px -8px rgba(218,123,147,0.55);
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 14px 34px -6px rgba(218,123,147,0.65);}
+  .btn-ghost{
+    background:rgba(243,239,233,0.06);
+    border:1px solid rgba(243,239,233,0.22);
+    color:var(--ink);
+    backdrop-filter:blur(6px);
+  }
+  .btn-ghost:hover{background:rgba(243,239,233,0.12); transform:translateY(-2px);}
+  .btn-block{width:100%;}
+
+  :focus-visible{outline:2px solid var(--rose); outline-offset:3px; border-radius:6px;}
+
+  /* ============================================
+     GRAIN + BLOBS (signature texture)
+  ============================================ */
+  .grain{
+    position:absolute; inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity:0.09;
+    mix-blend-mode:overlay;
+    pointer-events:none;
+  }
+  .blob-field{position:absolute; inset:0; overflow:hidden; pointer-events:none;}
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(70px);
+    mix-blend-mode:screen;
+    opacity:0.75;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .blob{animation:drift 22s var(--ease) infinite alternate;}
+    .blob-b{animation-duration:26s;}
+    .blob-c{animation-duration:19s;}
+  }
+  @keyframes drift{
+    0%{transform:translate(0,0) scale(1);}
+    100%{transform:translate(30px,-24px) scale(1.08);}
+  }
+
+  /* ============================================
+     NAV
+  ============================================ */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:16px var(--pad);
+    display:flex; align-items:center; justify-content:space-between;
+    background:rgba(28,51,52,0.55);
+    backdrop-filter:blur(16px) saturate(140%);
+    border-bottom:1px solid rgba(243,239,233,0.08);
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:1.08rem;
+    letter-spacing:-0.01em;
+  }
+  .brand-mark{
+    width:36px; height:36px;
+    border-radius:11px;
+    background:linear-gradient(150deg, var(--rose), var(--teal));
+    display:flex; align-items:center; justify-content:center;
+    color:var(--maroon);
+    font-size:1rem;
+    flex:none;
+  }
+  .nav-links{
+    display:flex; align-items:center; gap:34px;
+    font-size:0.94rem; font-weight:500;
+    color:var(--ink-muted);
+  }
+  .nav-links a{transition:color .25s ease;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-cta{display:flex; align-items:center; gap:18px;}
+  .nav-cta .btn{padding:11px 22px; font-size:0.9rem;}
+
+  .nav-toggle-label{display:none; cursor:pointer; z-index:110;}
+  .nav-toggle-label span{
+    display:block; width:24px; height:2px; background:var(--ink);
+    margin:5px 0; border-radius:2px; transition:transform .3s ease, opacity .3s ease;
+  }
+  #nav-toggle{display:none;}
+
+  /* ============================================
+     HERO
+  ============================================ */
+  .hero{
+    min-height:100vh;
+    display:flex; align-items:center;
+    padding-top:120px; padding-bottom:80px;
+    background:
+      radial-gradient(120% 90% at 15% -10%, rgba(55,110,111,0.35), transparent 55%),
+      radial-gradient(90% 70% at 100% 10%, rgba(218,123,147,0.22), transparent 60%),
+      var(--bg-deep);
+    overflow:hidden;
+  }
+  .hero .blob-a{width:480px; height:480px; top:-120px; left:-100px; background:radial-gradient(circle, var(--rose), transparent 70%);}
+  .hero .blob-b{width:420px; height:420px; top:10%; right:-140px; background:radial-gradient(circle, var(--teal), transparent 70%);}
+  .hero .blob-c{width:360px; height:360px; bottom:-160px; left:30%; background:radial-gradient(circle, var(--maroon), transparent 65%); opacity:0.9;}
+
+  .hero-inner{
+    position:relative; z-index:2;
+    width:100%;
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero-copy h1{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(2.4rem, 5vw, 4.1rem);
+    line-height:1.06;
+    letter-spacing:-0.015em;
+  }
+  .hero-copy h1 em{
+    font-style:normal;
+    color:var(--rose);
+  }
+  .hero-copy p{
+    margin-top:22px;
+    font-size:1.08rem;
+    color:var(--ink-muted);
+    max-width:520px;
+  }
+  .hero-actions{
+    display:flex; gap:16px; margin-top:34px; flex-wrap:wrap;
+  }
+  .hero-stats{
+    display:flex; gap:34px; margin-top:52px; flex-wrap:wrap;
+  }
+  .hero-stats div strong{
+    display:block; font-family:var(--font-display); font-size:1.6rem; color:var(--ink);
+  }
+  .hero-stats div span{
+    font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-faint);
+  }
+
+  /* Hero visual panel */
+  .hero-panel{
+    position:relative;
+    border-radius:var(--radius-lg);
+    background:rgba(243,239,233,0.06);
+    border:1px solid rgba(243,239,233,0.14);
+    backdrop-filter:blur(18px);
+    padding:28px;
+    box-shadow:0 40px 80px -30px rgba(0,0,0,0.55);
+  }
+  .hero-panel-row{
+    display:flex; align-items:center; gap:14px;
+    padding:14px 16px;
+    border-radius:var(--radius-md);
+    background:rgba(28,51,52,0.55);
+    margin-bottom:12px;
+  }
+  .hero-panel-row:last-child{margin-bottom:0;}
+  .hero-panel-icon{
+    width:38px; height:38px; border-radius:11px;
+    display:flex; align-items:center; justify-content:center;
+    flex:none; font-size:0.95rem;
+  }
+  .hero-panel-text strong{display:block; font-size:0.92rem; font-weight:600;}
+  .hero-panel-text span{font-size:0.78rem; color:var(--ink-faint);}
+  .hero-panel-tag{
+    margin-left:auto;
+    font-family:var(--font-mono);
+    font-size:0.68rem;
+    padding:4px 10px;
+    border-radius:100px;
+    background:rgba(218,123,147,0.18);
+    color:var(--rose-soft);
+    flex:none;
+  }
+
+  /* ============================================
+     LOGO STRIP
+  ============================================ */
+  .logo-strip{
+    padding:40px var(--pad);
+    background:var(--bg-primary);
+    border-top:1px solid rgba(243,239,233,0.06);
+    border-bottom:1px solid rgba(243,239,233,0.06);
+  }
+  .logo-strip .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:22px;
+    font-family:var(--font-mono);
+    font-size:0.82rem;
+    letter-spacing:0.05em;
+    color:var(--ink-faint);
+    text-transform:uppercase;
+  }
+
+  /* ============================================
+     GENERIC SECTION PADDING
+  ============================================ */
+  .section{padding:110px var(--pad);}
+  .section.tight{padding-top:90px; padding-bottom:90px;}
+
+  /* ============================================
+     TOOL CARDS
+  ============================================ */
+  .tools-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:22px;
+  }
+  .tool-card{
+    background:rgba(243,239,233,0.045);
+    border:1px solid rgba(243,239,233,0.1);
+    border-radius:var(--radius-md);
+    padding:26px;
+    transition:transform .4s var(--ease), border-color .3s ease, background .3s ease;
+  }
+  .tool-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(218,123,147,0.4);
+    background:rgba(243,239,233,0.08);
+  }
+  .tool-top{display:flex; align-items:center; gap:14px; margin-bottom:18px;}
+  .tool-icon{
+    width:46px; height:46px; border-radius:13px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.15rem; color:var(--maroon); flex:none;
+  }
+  .tool-top h3{font-family:var(--font-display); font-size:1.02rem; font-weight:600;}
+  .tool-cat{
+    display:block; margin-top:2px;
+    font-family:var(--font-mono); font-size:0.68rem;
+    letter-spacing:0.06em; text-transform:uppercase; color:var(--teal-soft);
+  }
+  .tool-card p{font-size:0.9rem; color:var(--ink-muted); margin-bottom:20px;}
+  .tool-link{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:0.86rem; font-weight:600; color:var(--rose);
+    transition:gap .25s ease;
+  }
+  .tool-link:hover{gap:12px;}
+
+  /* icon color variants */
+  .ic-1{background:var(--rose);}
+  .ic-2{background:var(--teal-soft);}
+  .ic-3{background:#e8c26f;}
+  .ic-4{background:var(--rose-soft);}
+  .ic-5{background:var(--teal);}
+  .ic-6{background:#c98fef;}
+  .ic-7{background:var(--rose);}
+  .ic-8{background:var(--teal-soft);}
+
+  /* ============================================
+     CATEGORIES
+  ============================================ */
+  .cat-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:18px;
+  }
+  .cat-card{
+    padding:28px 22px;
+    border-radius:var(--radius-md);
+    background:linear-gradient(160deg, rgba(55,110,111,0.16), rgba(46,21,27,0.28));
+    border:1px solid rgba(243,239,233,0.09);
+    transition:transform .35s var(--ease), border-color .3s ease;
+  }
+  .cat-card:hover{transform:translateY(-5px); border-color:rgba(218,123,147,0.35);}
+  .cat-card i{font-size:1.4rem; color:var(--rose); margin-bottom:14px; display:block;}
+  .cat-card h4{font-family:var(--font-display); font-size:0.98rem; font-weight:600; margin-bottom:6px;}
+  .cat-card span{font-size:0.82rem; color:var(--ink-faint);}
+
+  /* ============================================
+     PRICING
+  ============================================ */
+  .pricing-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+    align-items:stretch;
+  }
+  .price-card{
+    background:rgba(243,239,233,0.045);
+    border:1px solid rgba(243,239,233,0.1);
+    border-radius:var(--radius-lg);
+    padding:36px 30px;
+    display:flex; flex-direction:column;
+  }
+  .price-card.featured{
+    background:linear-gradient(165deg, rgba(218,123,147,0.16), rgba(55,110,111,0.12));
+    border:1px solid rgba(218,123,147,0.45);
+    transform:translateY(-14px);
+    box-shadow:0 30px 60px -25px rgba(218,123,147,0.35);
+  }
+  .price-badge{
+    align-self:flex-start;
+    font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.08em;
+    text-transform:uppercase; padding:5px 12px; border-radius:100px;
+    background:var(--rose); color:var(--maroon); margin-bottom:18px;
+  }
+  .price-card h3{font-family:var(--font-display); font-size:1.2rem; font-weight:600;}
+  .price-card .plan-desc{font-size:0.88rem; color:var(--ink-muted); margin-top:6px; margin-bottom:22px;}
+  .price-amount{font-family:var(--font-display); font-size:2.4rem; font-weight:700; margin-bottom:4px;}
+  .price-amount span{font-family:var(--font-mono); font-size:0.9rem; color:var(--ink-faint); font-weight:400;}
+  .price-features{margin:26px 0 30px; flex:1;}
+  .price-features li{
+    display:flex; align-items:flex-start; gap:10px;
+    font-size:0.9rem; color:var(--ink-muted);
+    padding:9px 0;
+    border-top:1px solid rgba(243,239,233,0.08);
+  }
+  .price-features li:first-child{border-top:none;}
+  .price-features i{color:var(--teal-soft); margin-top:3px; flex:none;}
+
+  /* ============================================
+     TESTIMONIALS
+  ============================================ */
+  .testi-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+  }
+  .testi-card{
+    background:rgba(243,239,233,0.045);
+    border:1px solid rgba(243,239,233,0.1);
+    border-radius:var(--radius-md);
+    padding:30px;
+  }
+  .testi-stars{color:var(--rose); font-size:0.82rem; margin-bottom:16px; letter-spacing:2px;}
+  .testi-card p{font-size:0.96rem; color:var(--ink); margin-bottom:24px; line-height:1.65;}
+  .testi-person{display:flex; align-items:center; gap:12px;}
+  .testi-avatar{
+    width:42px; height:42px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-size:0.85rem; font-weight:600;
+    color:var(--maroon); flex:none;
+  }
+  .testi-person strong{display:block; font-size:0.9rem;}
+  .testi-person span{font-size:0.78rem; color:var(--ink-faint);}
+
+  /* ============================================
+     FAQ
+  ============================================ */
+  .faq-list{max-width:760px;}
+  .faq-item{
+    border-bottom:1px solid rgba(243,239,233,0.12);
+  }
+  .faq-item summary{
+    list-style:none;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:20px;
+    padding:24px 4px;
+    font-family:var(--font-display); font-size:1.02rem; font-weight:600;
+    cursor:pointer;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:'\002B';
+    font-family:var(--font-body); font-size:1.4rem; color:var(--rose);
+    transition:transform .3s ease;
+    flex:none;
+  }
+  .faq-item[open] summary::after{content:'\2212';}
+  .faq-item p{
+    padding:0 4px 24px; max-width:640px;
+    color:var(--ink-muted); font-size:0.94rem;
+  }
+
+  /* ============================================
+     NEWSLETTER
+  ============================================ */
+  .newsletter{
+    margin:0 var(--pad);
+    border-radius:var(--radius-lg);
+    padding:64px var(--pad);
+    background:
+      radial-gradient(110% 140% at 20% 0%, rgba(218,123,147,0.28), transparent 60%),
+      radial-gradient(90% 120% at 100% 100%, rgba(55,110,111,0.3), transparent 60%),
+      var(--bg-deep);
+    text-align:center;
+    overflow:hidden;
+    position:relative;
+  }
+  .newsletter h2{
+    font-family:var(--font-display); font-weight:700;
+    font-size:clamp(1.7rem, 3vw, 2.3rem);
+    position:relative; z-index:2;
+  }
+  .newsletter p{
+    color:var(--ink-muted); margin:14px auto 30px; max-width:460px;
+    position:relative; z-index:2;
+  }
+  .newsletter-form{
+    display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+    position:relative; z-index:2;
+  }
+  .newsletter-form input{
+    font-family:var(--font-body); font-size:0.95rem;
+    padding:15px 22px; border-radius:100px; width:320px;
+    border:1px solid rgba(243,239,233,0.2);
+    background:rgba(243,239,233,0.08); color:var(--ink);
+  }
+  .newsletter-form input::placeholder{color:var(--ink-faint);}
+  .newsletter-note{
+    margin-top:16px; font-family:var(--font-mono); font-size:0.72rem;
+    color:var(--ink-faint); position:relative; z-index:2;
+  }
+
+  /* ============================================
+     FOOTER
+  ============================================ */
+  .footer{
+    background:var(--maroon);
+    padding:70px var(--pad) 0;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1.2fr;
+    gap:40px;
+    padding-bottom:50px;
+    border-bottom:1px solid rgba(243,239,233,0.1);
+  }
+  .footer-brand p{color:var(--ink-muted); font-size:0.9rem; margin:14px 0 22px; max-width:280px;}
+  .footer h5{
+    font-family:var(--font-mono); font-size:0.75rem; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--ink-faint); margin-bottom:18px;
+  }
+  .footer-links li{margin-bottom:11px;}
+  .footer-links a{font-size:0.9rem; color:var(--ink-muted); transition:color .25s ease;}
+  .footer-links a:hover{color:var(--rose-soft);}
+  .footer-contact li{display:flex; align-items:flex-start; gap:10px; font-size:0.88rem; color:var(--ink-muted); margin-bottom:14px;}
+  .footer-contact i{color:var(--rose); margin-top:3px;}
+  .social-row{display:flex; gap:12px; margin-top:6px;}
+  .social-row a{
+    width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(243,239,233,0.08);
+    border:1px solid rgba(243,239,233,0.12);
+    transition:background .25s ease, transform .25s ease;
+  }
+  .social-row a:hover{background:var(--rose); color:var(--maroon); transform:translateY(-3px);}
+  .footer-bottom{
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:10px;
+    padding:26px 0;
+    font-size:0.82rem; color:var(--ink-faint);
+  }
+  .footer-bottom a{color:var(--rose-soft); font-weight:600;}
+
+  /* ============================================
+     RESPONSIVE
+  ============================================ */
+  @media (max-width: 1024px){
+    .tools-grid{grid-template-columns:repeat(2, 1fr);}
+    .cat-grid{grid-template-columns:repeat(2, 1fr);}
+    .pricing-grid{grid-template-columns:1fr; max-width:420px; margin:0 auto;}
+    .price-card.featured{transform:none;}
+    .testi-grid{grid-template-columns:1fr;}
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-panel{max-width:520px;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+
+  @media (max-width: 768px){
+    .nav-links, .nav-cta .btn-ghost{display:none;}
+    .nav-toggle-label{display:block;}
+    #nav-toggle:checked ~ .nav-links{
+      display:flex; position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; align-items:flex-start; gap:0;
+      background:rgba(28,51,52,0.98);
+      padding:10px var(--pad) 20px;
+      border-bottom:1px solid rgba(243,239,233,0.08);
+    }
+    #nav-toggle:checked ~ .nav-links a{padding:12px 0; width:100%; border-top:1px solid rgba(243,239,233,0.08);}
+    .section{padding:80px var(--pad);}
+    .tools-grid{grid-template-columns:1fr;}
+    .cat-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr; gap:34px;}
+    .hero-stats{gap:24px;}
+    .newsletter-form input{width:100%;}
+    .newsletter{margin:0 16px;}
+  }
+
+  @media (max-width: 480px){
+    .hero{padding-top:100px;}
+    .hero-actions .btn{width:100%;}
+    .hero-actions{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <a href="#top" class="brand">
+    <span class="brand-mark"><i class="fa-solid fa-bolt"></i></span>
+    AI Tools Hub
+  </a>
+
+  <input type="checkbox" id="nav-toggle">
+  <nav class="nav-links">
+    <a href="#tools">Tools</a>
+    <a href="#categories">Categories</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+
+  <div class="nav-cta">
+    <a href="#tools" class="btn btn-ghost">Explore Tools</a>
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </label>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="blob-field">
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="blob blob-c"></div>
+  </div>
+  <div class="grain"></div>
+
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow">AI Discovery Platform</p>
+      <h1>Explore, compare &amp; discover the world's best <em>AI tools</em> — all in one place.</h1>
+      <p>AI Tools Hub is your one-stop destination to browse trending AI tools, filter by category, compare pricing, and find the right solution for your work — whether you code, design, write, or market.</p>
+
+      <div class="hero-actions">
+        <a href="#tools" class="btn btn-primary"><i class="fa-solid fa-compass"></i> Explore AI Tools</a>
+        <a href="#categories" class="btn btn-ghost">Browse Categories</a>
+      </div>
+
+      <div class="hero-stats">
+        <div><strong>50+</strong><span>AI Tools Listed</span></div>
+        <div><strong>8</strong><span>Categories</span></div>
+        <div><strong>10k+</strong><span>Monthly Visitors</span></div>
+      </div>
+    </div>
+
+    <div class="hero-panel">
+      <div class="hero-panel-row">
+        <span class="hero-panel-icon ic-1"><i class="fa-solid fa-comments"></i></span>
+        <span class="hero-panel-text"><strong>ChatGPT</strong><span>AI Chatbots</span></span>
+        <span class="hero-panel-tag">Trending</span>
+      </div>
+      <div class="hero-panel-row">
+        <span class="hero-panel-icon ic-2"><i class="fa-solid fa-image"></i></span>
+        <span class="hero-panel-text"><strong>Midjourney</strong><span>Image Generation</span></span>
+        <span class="hero-panel-tag">Popular</span>
+      </div>
+      <div class="hero-panel-row">
+        <span class="hero-panel-icon ic-3"><i class="fa-solid fa-code"></i></span>
+        <span class="hero-panel-text"><strong>GitHub Copilot</strong><span>Coding Assistant</span></span>
+        <span class="hero-panel-tag">Top Pick</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOGO STRIP ============ -->
+<div class="logo-strip">
+  <div class="wrap">
+    <span>Chatbots</span>
+    <span>Image Gen</span>
+    <span>Coding</span>
+    <span>Writing</span>
+    <span>Productivity</span>
+    <span>Marketing</span>
+    <span>Voice AI</span>
+  </div>
+</div>
+
+<!-- ============ POPULAR TOOLS ============ -->
+<section class="section" id="tools">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Popular AI Tools</p>
+      <h2>The tools everyone's talking about right now</h2>
+      <p>A hand-picked line-up of the AI tools people actually rely on every day — across chat, image, code, and research.</p>
+    </div>
+
+    <div class="tools-grid">
+
+      <div class="tool-card">
+        <div class="tool-top">
+          <span class="tool-icon ic-1"><i class="fa-solid fa-comments"></i></span>
+          <div><h3>ChatGPT</h3><span class="tool-cat">AI Chatbots</span></div>
+        </div>
+        <p>A conversational AI assistant for writing, brainstorming, research, and everyday problem solving.</p>
+        <a href="#" class="tool-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-top">
+          <span class="tool-icon ic-2"><i class="fa-solid fa-brain"></i></span>
+          <div><h3>Claude</h3><span class="tool-cat">AI Chatbots</span></div>
+        </div>
+        <p>A thoughtful AI assistant built for long-form reasoning, coding help, and careful, detailed writing.</p>
+        <a href="#" class="tool-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-top">
+          <span class="tool-icon ic-3"><i class="fa-solid fa-gem"></i></span>
+          <div><h3>Gemini</h3><span class="tool-cat">AI Chatbots</span></div>
+        </div>
+        <p>Google's multimodal AI model, built to understand text, images, and code together in one place.</p>
+        <a href="#" class="tool-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-top">
+          <span class="tool-icon ic-4"><i class="fa-solid fa-image"></i></span>
+          <div><h3>Midjourney</h3><span class="tool-cat">Image Generation</span></div>
+        </div>
+        <p>A leading AI image generator known for painterly, highly stylised, and cinematic visuals.</p>
+        <a href="#" class="tool-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-top">
+          <span class="tool-icon ic-5"><i class="fa-solid fa-code"></i></span>
+          <div><h3>GitHub Copilot</h3><span class="tool-cat">Coding Assistants</span></div>
+        </div>
+        <p>An in-editor AI pair programmer that suggests code, completes functions, and speeds up dev work.</p>
+        <a href="#" class="tool-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-top">
+          <span class="tool-icon ic-6"><i class="fa-solid fa-magnifying-glass"></i></span>
+          <div><h3>Perplexity AI</h3><span class="tool-cat">Research</span></div>
+        </div>
+        <p>An AI-powered answer engine that searches the web and cites sources for fast, reliable research.</p>
+        <a href="#" class="tool-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-top">
+          <span class="tool-icon ic-7"><i class="fa-solid fa-note-sticky"></i></span>
+          <div><h3>Notion AI</h3><span class="tool-cat">Productivity</span></div>
+        </div>
+        <p>Built directly into Notion, it drafts, summarises, and organises your notes and docs on demand.</p>
+        <a href="#" class="tool-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-top">
+          <span class="tool-icon ic-8"><i class="fa-solid fa-palette"></i></span>
+          <div><h3>Canva AI</h3><span class="tool-cat">Design</span></div>
+        </div>
+        <p>AI-assisted design tools inside Canva for instant layouts, backgrounds, and on-brand graphics.</p>
+        <a href="#" class="tool-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATEGORIES ============ -->
+<section class="section tight" id="categories">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Browse by Category</p>
+      <h2>Find tools organised the way you actually search</h2>
+      <p>Jump straight to the kind of tool you need, instead of scrolling through everything.</p>
+    </div>
+
+    <div class="cat-grid">
+      <div class="cat-card"><i class="fa-solid fa-comments"></i><h4>AI Chatbots</h4><span>Conversation &amp; assistance</span></div>
+      <div class="cat-card"><i class="fa-solid fa-image"></i><h4>Image Generation</h4><span>Art &amp; visuals</span></div>
+      <div class="cat-card"><i class="fa-solid fa-film"></i><h4>Video Editing</h4><span>Cutting &amp; effects</span></div>
+      <div class="cat-card"><i class="fa-solid fa-code"></i><h4>Coding Assistants</h4><span>Dev &amp; debugging</span></div>
+      <div class="cat-card"><i class="fa-solid fa-pen-nib"></i><h4>Writing Tools</h4><span>Copy &amp; content</span></div>
+      <div class="cat-card"><i class="fa-solid fa-bolt"></i><h4>Productivity</h4><span>Workflow &amp; docs</span></div>
+      <div class="cat-card"><i class="fa-solid fa-bullhorn"></i><h4>Marketing</h4><span>Campaigns &amp; growth</span></div>
+      <div class="cat-card"><i class="fa-solid fa-microphone"></i><h4>Voice AI</h4><span>Speech &amp; audio</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Pricing Plans</p>
+      <h2>Simple plans for explorers, professionals &amp; teams</h2>
+      <p>Start for free and upgrade whenever you need deeper tool discovery and comparison features.</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <div class="price-card">
+        <h3>Free</h3>
+        <p class="plan-desc">For casual explorers browsing what's out there.</p>
+        <div class="price-amount">$0 <span>/ month</span></div>
+        <ul class="price-features">
+          <li><i class="fa-solid fa-check"></i> Browse all tool listings</li>
+          <li><i class="fa-solid fa-check"></i> Save up to 5 favorites</li>
+          <li><i class="fa-solid fa-check"></i> Weekly newsletter</li>
+          <li><i class="fa-solid fa-check"></i> Community reviews access</li>
+        </ul>
+        <a href="#" class="btn btn-ghost btn-block">Start Free</a>
+      </div>
+
+      <div class="price-card featured">
+        <span class="price-badge">Most Popular</span>
+        <h3>Pro</h3>
+        <p class="plan-desc">For professionals who compare tools often.</p>
+        <div class="price-amount">$12 <span>/ month</span></div>
+        <ul class="price-features">
+          <li><i class="fa-solid fa-check"></i> Everything in Free</li>
+          <li><i class="fa-solid fa-check"></i> Unlimited favorites &amp; collections</li>
+          <li><i class="fa-solid fa-check"></i> Advanced filtering &amp; comparisons</li>
+          <li><i class="fa-solid fa-check"></i> Early access to new listings</li>
+          <li><i class="fa-solid fa-check"></i> Priority support</li>
+        </ul>
+        <a href="#" class="btn btn-primary btn-block">Go Pro</a>
+      </div>
+
+      <div class="price-card">
+        <h3>Enterprise</h3>
+        <p class="plan-desc">For teams &amp; businesses adopting AI at scale.</p>
+        <div class="price-amount">Custom</div>
+        <ul class="price-features">
+          <li><i class="fa-solid fa-check"></i> Everything in Pro</li>
+          <li><i class="fa-solid fa-check"></i> Team workspaces &amp; sharing</li>
+          <li><i class="fa-solid fa-check"></i> Dedicated account manager</li>
+          <li><i class="fa-solid fa-check"></i> Custom tool curation</li>
+          <li><i class="fa-solid fa-check"></i> API access for integrations</li>
+        </ul>
+        <a href="#" class="btn btn-ghost btn-block">Contact Sales</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section tight" id="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What People Say</p>
+      <h2>Trusted by people who work with AI every day</h2>
+      <p>Real feedback from students, developers, and creators who found their tools here.</p>
+    </div>
+
+    <div class="testi-grid">
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"I used to have twenty tabs open comparing AI tools. Now I just check AI Tools Hub and get straight to a shortlist."</p>
+        <div class="testi-person">
+          <span class="testi-avatar ic-1">AR</span>
+          <div><strong>Aisha R.</strong><span>Product Designer</span></div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"The category breakdown alone saved me hours. I found a coding assistant that fit my stack in one afternoon."</p>
+        <div class="testi-person">
+          <span class="testi-avatar ic-2">MT</span>
+          <div><strong>Marcus T.</strong><span>Full-Stack Developer</span></div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Clean, fast, and genuinely useful pricing comparisons. Our whole marketing team uses it before trialling anything new."</p>
+        <div class="testi-person">
+          <span class="testi-avatar ic-3">PN</span>
+          <div><strong>Priya N.</strong><span>Marketing Lead</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Questions people ask us most</h2>
+      <p>Still curious about something? Here are the answers we give most often.</p>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>What is AI Tools Hub?</summary>
+        <p>AI Tools Hub is a curated directory that helps you discover, compare, and choose the right AI-powered tools across chatbots, image generation, coding, writing, and more — all organised in one place.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Are these tools free?</summary>
+        <p>Many listed tools offer a free tier, but pricing varies by provider. Each tool's listing clearly marks its pricing model so you know what to expect before you click through.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Which AI tool is best for coding?</summary>
+        <p>It depends on your workflow — GitHub Copilot is widely used for in-editor code suggestions, while Claude and ChatGPT are popular for explaining logic, debugging, and writing documentation.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can businesses use these AI tools?</summary>
+        <p>Yes. Most tools featured here offer team or enterprise plans with added security, collaboration features, and admin controls suited for business use.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="section tight">
+  <div class="newsletter">
+    <div class="grain"></div>
+    <h2>Never miss a new AI tool.</h2>
+    <p>Get the best new AI tools delivered to your inbox, twice a month. No spam, unsubscribe anytime.</p>
+    <form class="newsletter-form" onsubmit="return false;">
+      <input type="email" placeholder="you@example.com" required aria-label="Email address">
+      <button type="submit" class="btn btn-primary">Subscribe <i class="fa-solid fa-paper-plane"></i></button>
+    </form>
+    <p class="newsletter-note">Free forever. No credit card required.</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <a href="#top" class="brand">
+          <span class="brand-mark"><i class="fa-solid fa-bolt"></i></span>
+          AI Tools Hub
+        </a>
+        <p>Discover, compare, and choose the right AI tools for the way you actually work — updated every week.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h5>Quick Links</h5>
+        <ul class="footer-links">
+          <li><a href="#top">Home</a></li>
+          <li><a href="#tools">Popular Tools</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Categories</h5>
+        <ul class="footer-links">
+          <li><a href="#categories">AI Chatbots</a></li>
+          <li><a href="#categories">Image Generation</a></li>
+          <li><a href="#categories">Coding Assistants</a></li>
+          <li><a href="#categories">Writing Tools</a></li>
+          <li><a href="#categories">Voice AI</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Contact</h5>
+        <ul class="footer-contact">
+          <li><i class="fa-solid fa-envelope"></i> syedzainkhan2005@gmail.com</li>
+          <li><i class="fa-solid fa-phone"></i> +92 317 9569951</li>
+          <li><i class="fa-solid fa-location-dot"></i> Peshawar, Pakistan</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 AI Tools Hub. All rights reserved.</span>
+      <span>Designed &amp; Developed by <a href="mailto:syedzainkhan2005@gmail.com">Syed Zain</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
