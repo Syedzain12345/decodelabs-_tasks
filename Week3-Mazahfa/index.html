@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mazahfa — The Future of Shopping</title>
+<meta name="description" content="Mazahfa is a futuristic e-commerce experience for premium electronics designed for tomorrow.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- Styles -->
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-theme="dark">
+
+<!-- ============ LOADING SCREEN ============ -->
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <svg class="loader-logo" viewBox="0 0 120 120" width="90" height="90">
+      <circle cx="60" cy="60" r="46" fill="none" stroke="var(--teal)" stroke-width="2" opacity="0.25"/>
+      <circle class="loader-ring" cx="60" cy="60" r="46" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round"/>
+      <text x="60" y="68" text-anchor="middle" class="loader-mark">M</text>
+    </svg>
+    <div class="loader-word">MAZAHFA</div>
+    <div class="loader-bar-track"><div class="loader-bar-fill" id="loaderFill"></div></div>
+    <div class="loader-pct" id="loaderPct">0%</div>
+  </div>
+</div>
+
+<!-- ============ SCROLL PROGRESS ============ -->
+<div class="scroll-progress"><div class="scroll-progress-fill" id="scrollProgress"></div></div>
+
+<!-- ============ CURSOR GLOW ============ -->
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- ============ TOAST CONTAINER ============ -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ============ SEARCH OVERLAY ============ -->
+<div class="search-overlay" id="searchOverlay">
+  <button class="search-close" id="searchClose" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
+  <div class="search-overlay-inner">
+    <i class="fa-solid fa-magnifying-glass search-overlay-icon"></i>
+    <input type="text" id="searchInput" class="search-overlay-input" placeholder="Search products, e.g. headphones..." autocomplete="off">
+  </div>
+  <div class="search-results" id="searchResults"></div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="#top" class="logo">
+      <span class="logo-mark">M</span>AZAHFA
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#categories">Categories</a>
+      <a href="#products">Shop</a>
+      <a href="#trending">Trending</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#newsletter">Contact</a>
+    </nav>
+
+    <div class="navbar-actions">
+      <button class="icon-btn" id="searchBtn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+      <div class="theme-switch" id="themeSwitch">
+        <button class="theme-opt active" data-theme-opt="dark" aria-label="Dark theme"><i class="fa-solid fa-moon"></i></button>
+        <button class="theme-opt" data-theme-opt="light" aria-label="Light theme"><i class="fa-solid fa-sun"></i></button>
+        <button class="theme-opt" data-theme-opt="cyber" aria-label="Cyber theme"><i class="fa-solid fa-bolt"></i></button>
+      </div>
+
+      <button class="icon-btn" id="wishlistBtn" aria-label="Wishlist">
+        <i class="fa-regular fa-heart"></i>
+        <span class="badge" id="wishlistCount">0</span>
+      </button>
+
+      <button class="icon-btn" id="cartBtn" aria-label="Cart">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="badge" id="cartCount">0</span>
+      </button>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ CART DRAWER ============ -->
+<aside class="drawer" id="cartDrawer">
+  <div class="drawer-header">
+    <h3>Your Bag</h3>
+    <button class="icon-btn" id="cartClose" aria-label="Close cart"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="drawer-items" id="cartItems">
+    <p class="drawer-empty">Your bag is empty. Time to explore the future.</p>
+  </div>
+  <div class="drawer-footer">
+    <div class="drawer-total"><span>Total</span><span id="cartTotal">$0.00</span></div>
+    <button class="btn btn-primary btn-full" id="checkoutBtn">Checkout</button>
+  </div>
+</aside>
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <canvas class="hero-canvas" id="heroCanvas"></canvas>
+  <div class="hero-glow" id="heroGlow"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <span class="eyebrow reveal">Premium Electronics · 2026 Collection</span>
+    <h1 class="hero-title">
+      <span class="reveal">Discover the</span>
+      <span class="reveal hero-title-accent">Future of Shopping</span>
+    </h1>
+    <p class="hero-subtitle reveal">Premium electronics designed for tomorrow — engineered with obsessive detail, delivered to your door.</p>
+    <div class="hero-actions reveal">
+      <button class="btn btn-primary magnetic" data-scroll="#products">Shop Now <i class="fa-solid fa-arrow-right"></i></button>
+      <button class="btn btn-ghost magnetic" data-scroll="#categories">Explore Collection</button>
+    </div>
+  </div>
+
+  <div class="hero-scroll-cue">
+    <span>Scroll</span>
+    <div class="mouse-icon"><div class="mouse-wheel"></div></div>
+  </div>
+</section>
+
+<!-- ============ FEATURED CATEGORIES ============ -->
+<section class="section" id="categories">
+  <div class="section-head reveal">
+    <span class="eyebrow">Browse</span>
+    <h2>Featured Categories</h2>
+    <p>Six worlds of tomorrow's technology, one storefront.</p>
+  </div>
+
+  <div class="category-grid" id="categoryGrid">
+    <!-- injected by JS -->
+  </div>
+</section>
+
+<!-- ============ PRODUCT SHOWCASE ============ -->
+<section class="section section-alt" id="products">
+  <div class="section-head reveal">
+    <span class="eyebrow">Shop</span>
+    <h2>Product Showcase</h2>
+    <p>Hand-picked devices built for the world ahead.</p>
+  </div>
+
+  <div class="filter-bar reveal" id="filterBar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="phones">Phones</button>
+    <button class="filter-btn" data-filter="gaming">Gaming</button>
+    <button class="filter-btn" data-filter="laptop">Laptop</button>
+    <button class="filter-btn" data-filter="accessories">Accessories</button>
+
+    <select class="sort-select" id="sortSelect" aria-label="Sort products">
+      <option value="default">Sort by: Featured</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+      <option value="rating-desc">Top Rated</option>
+    </select>
+  </div>
+
+  <div class="product-grid" id="productGrid">
+    <!-- injected by JS -->
+  </div>
+</section>
+
+<!-- ============ TRENDING SLIDER ============ -->
+<section class="section" id="trending">
+  <div class="section-head reveal">
+    <span class="eyebrow">Hot Right Now</span>
+    <h2>Trending Products</h2>
+  </div>
+
+  <div class="slider-wrap reveal">
+    <button class="slider-arrow slider-prev" id="sliderPrev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+    <div class="slider-track-viewport">
+      <div class="slider-track" id="sliderTrack"><!-- injected by JS --></div>
+    </div>
+    <button class="slider-arrow slider-next" id="sliderNext" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+  </div>
+</section>
+
+<!-- ============ FLASH SALE ============ -->
+<section class="flash-sale">
+  <div class="flash-sale-bg"></div>
+  <div class="flash-sale-inner reveal">
+    <div class="flash-sale-text">
+      <span class="eyebrow eyebrow-light">Limited Time</span>
+      <h2>Flash Sale Ends Soon</h2>
+      <p>Up to 40% off select devices. Once it's gone, it's gone.</p>
+      <p class="flash-sale-extra" id="flashExtra" hidden>All flash-sale items ship free worldwide and include our standard two-year warranty, at no extra cost.</p>
+      <button class="read-more-btn" id="readMoreBtn">Read more <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="flash-sale-actions">
+        <button class="btn btn-primary magnetic" data-scroll="#products">Grab the Deal</button>
+      </div>
+    </div>
+    <div class="countdown" id="countdown">
+      <div class="countdown-unit"><span id="cdHours">05</span><label>Hours</label></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><span id="cdMinutes">20</span><label>Minutes</label></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><span id="cdSeconds">45</span><label>Seconds</label></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY CHOOSE US ============ -->
+<section class="section" id="why">
+  <div class="section-head reveal">
+    <span class="eyebrow">Why Mazahfa</span>
+    <h2>Why Choose Us</h2>
+  </div>
+
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-icon"><i class="fa-solid fa-truck-fast"></i></div>
+      <h3>Fast Delivery</h3>
+      <p>Same-week dispatch, tracked door to door.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <h3>Secure Payments</h3>
+      <p>Encrypted checkout, every single time.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon"><i class="fa-solid fa-gem"></i></div>
+      <h3>Premium Quality</h3>
+      <p>Every device inspected before it ships.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon"><i class="fa-solid fa-award"></i></div>
+      <h3>Warranty</h3>
+      <p>Two-year coverage, no fine print.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANIMATED STATS ============ -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat reveal">
+      <span class="stat-number" data-count="50" data-suffix="K+">0</span>
+      <label>Happy Customers</label>
+    </div>
+    <div class="stat reveal">
+      <span class="stat-number" data-count="120" data-suffix="+">0</span>
+      <label>Premium Products</label>
+    </div>
+    <div class="stat reveal">
+      <span class="stat-number" data-count="4.9" data-decimal="1" data-suffix="★">0</span>
+      <label>Average Rating</label>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CUSTOMER REVIEWS ============ -->
+<section class="section section-alt" id="reviews">
+  <div class="section-head reveal">
+    <span class="eyebrow">Testimonials</span>
+    <h2>Customer Reviews</h2>
+  </div>
+
+  <div class="review-wrap reveal">
+    <button class="slider-arrow review-prev" id="reviewPrev" aria-label="Previous review"><i class="fa-solid fa-chevron-left"></i></button>
+    <div class="review-viewport">
+      <div class="review-track" id="reviewTrack"><!-- injected by JS --></div>
+    </div>
+    <button class="slider-arrow review-next" id="reviewNext" aria-label="Next review"><i class="fa-solid fa-chevron-right"></i></button>
+  </div>
+  <div class="review-dots" id="reviewDots"></div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="newsletter" id="newsletter">
+  <div class="newsletter-inner reveal">
+    <h2>Stay Ahead of Tomorrow</h2>
+    <p>Get early access to drops, flash sales, and future-tech drops before anyone else.</p>
+    <form class="newsletter-form" id="newsletterForm">
+      <input type="email" id="newsletterEmail" placeholder="you@email.com" required>
+      <button type="submit" class="btn btn-primary magnetic">Subscribe</button>
+    </form>
+    <label class="checkbox-row">
+      <input type="checkbox" id="promoCheckbox" checked>
+      <span>Send me flash-sale alerts and new-drop notifications</span>
+    </label>
+    <p class="newsletter-msg" id="newsletterMsg"></p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#top" class="logo"><span class="logo-mark">M</span>AZAHFA</a>
+      <p>Premium electronics designed for tomorrow.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="#products">Smartphones</a>
+      <a href="#products">Laptops</a>
+      <a href="#products">Gaming</a>
+      <a href="#products">Audio</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Press</a>
+      <a href="#">Sustainability</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Support</h4>
+      <a href="#">Help Center</a>
+      <a href="#">Shipping</a>
+      <a href="#">Returns</a>
+      <a href="#">Warranty</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Mazahfa. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ============ FLOATING ACTION BUTTON ============ -->
+<button class="fab" id="fabTop" aria-label="Back to top">
+  <svg class="fab-ring" viewBox="0 0 44 44"><circle cx="22" cy="22" r="20"/></svg>
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<script src="js/script.js"></script>
+</body>
+</html>
